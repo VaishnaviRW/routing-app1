@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <img
+                    class="avtarImage img-fluid mb-3"
+                    [src]="userObj.profileImage"
+                    [alt]="userObj.userName"
+                    [title]="userObj.userName">
+
+                <h3 class="fw-bold">
+                    {{ userObj.userName }}
+                    <small>({{ userObj.userRole }})</small>
+                </h3>
+
+                <p>{{ userObj.profileDescription }}</p>
+            </div>
+
+            <hr>
+
+            <div class="card-footer d-flex justify-content-between">
+                <button
+                    [queryParamsHandling]="'preserve'"
+                    routerLink="edit"
+                    class="btn btn-primary">
+                    Edit
+                </button>
+
+                <button
+                    (click)="onRemoveUser()"
+                    class="btn btn-danger">
+                    Remove
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 mt-4 mt-md-0">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="fw-bold">Basic Information</h3>
+
+                <p class="mb-1">
+                    User ID : {{ userObj.userId }}
+                </p>
+
+                <p class="mb-1">
+                    Experience : {{ userObj.experienceYears }}
+                </p>
+
+                <p class="mb-0">
+                    Status :
+                    <span
+                        class="badge"
+                        [ngClass]="{
+                            'bg-success': userObj.isActive,
+                            'bg-danger': !userObj.isActive
+                        }">
+                        {{ userObj.isActive ? 'Active' : 'Inactive' }}
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="fw-bold">Skills</h3>
+
+                <span
+                    *ngFor="let skill of userObj.skills"
+                    class="badge bg-primary me-2 mb-2">
+                    {{ skill }}
+                </span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="fw-bold">Current Address</h3>
+
+                        <p class="mb-2">{{ userObj.address.current.country }}</p>
+                        <p class="mb-2">{{ userObj.address.current.state }}</p>
+                        <p class="mb-2">{{ userObj.address.current.city }}</p>
+                        <p class="mb-2">{{ userObj.address.current.zipcode }}</p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="fw-bold">Permanent Address</h3>
+
+                        <p class="mb-2">{{ userObj.address.permanent.country }}</p>
+                        <p class="mb-2">{{ userObj.address.permanent.state }}</p>
+                        <p class="mb-2">{{ userObj.address.permanent.city }}</p>
+                        <p class="mb-2">{{ userObj.address.permanent.zipcode }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
