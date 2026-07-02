@@ -6,11 +6,13 @@ import { Iproduct } from 'src/app/models/products';
 import { ProductsService } from 'src/app/service/products.service';
 import { SnackbarService } from 'src/app/service/snackbar.service';
 import { GetConfirmComponent } from '../../get-confirm/get-confirm.component';
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
+  
 })
 export class ProductComponent implements OnInit {
 
